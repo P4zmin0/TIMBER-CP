@@ -1,0 +1,1 @@
+root://cms-xrd-global.cern.ch//store/data/Run2022F/EGamma/NANOAOD/22Sep2023-v1/2520000/005a47c9-27b2-421e-9444-c3864be0ebe6.root

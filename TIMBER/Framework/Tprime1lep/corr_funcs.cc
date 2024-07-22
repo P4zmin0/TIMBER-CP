@@ -11,9 +11,10 @@ bool goldenjson(lumiMask myLumiMask, const unsigned int &run, const unsigned int
 }; 
 
 // Pile Up Function
-RVec<double> pufunc(correction::Correction::Ref& pileupcorr, const float &numTrueInt) 
+// RVec<double> pu = {pileupcorr->evaluate(numTrueInt, "nominal"}), pileupcorr->evaluate({numTrueInt, "up"}), pileupcorr->evaluate({numTrueInt, "down"})};
+RVec<double> pufunc(correction::Correction::Ref& corrPU, const float &numTrueInt)
 {
-  RVec<double> pu = {pileupcorr->evaluate({numTrueInt, "nominal"}), pileupcorr->evaluate({numTrueInt, "up"}), pileupcorr->evaluate({numTrueInt, "down"})};
+  RVec<double> pu = {corrPU->evaluate({numTrueInt, "nominal"}), corrPU->evaluate({numTrueInt, "up"}), corrPU->evaluate({numTrueInt, "down"}) };
   return pu;
 };
 
