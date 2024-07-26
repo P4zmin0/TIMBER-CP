@@ -80,24 +80,26 @@ RVec<float> metfunc(correction::Correction::Ref& metptcorr, correction::Correcti
   return corrmet;
 };
 
-// IDK what this function does. What's HLT? seems to be calling a bunch of variables under HLT 
-// (electrons? and a muon correction)
-RVec<double> hltfunc(correction::Correction::Ref& muonhltcorr, vector<float> &elhlt_pts, vector<float> &elhlt_etas, vector<vector<float>> &elechltsfs, vector<vector<float>> &elechltuncs, string &yrstr, const float &pt, const float &eta, const bool &isEl)
+// IDK what this function does. What's HLT? seems to be calling a bunch of variables under HLT (electrons? and a muon correction)
 // I assumed hltfunc is a double type vector because of the definition of its return value below.
+RVec<double> hltfunc(vector<float> &elhlt_pts, vector<float> &elhlt_etas, vector<vector<float>> &elechltsfs, vector<vector<float>> &elechltuncs, string &yrstr, const float &pt, const float &eta, const bool &isEl)
+
+//RVec<double> hltfunc(correction::Correction::Ref& muonhltcorr, vector<float> &elhlt_pts, vector<float> &elhlt_etas, vector<vector<float>> &elechltsfs, vector<vector<float>> &elechltuncs, string &yrstr, const float &pt, const float &eta, const bool &isEl)
+
 {
     RVec<double> hlt;
     if(isEl > 0){
       int ptbin = (std::upper_bound(elhlt_pts.begin(), elhlt_pts.end(), pt) - elhlt_pts.begin())-1;
-      int etabin = (std::upper_bound(elhlt_etas.begin(), elhlt_etas.end(), 
+      int etabin = (std::upper_bound(elhlt_etas.begin(), elhlt_etas.end(),
 	            abs(eta)) - elhlt_etas.begin())-1;
       hlt = {elechltsfs[ptbin][etabin], elechltuncs[ptbin][etabin]};
     }
     else {
-      //we have lookup tables we might put it into correction format.	      
-      
-      hlt = {1,1,1};  
-      /*hlt = {muonhltcorr->evaluate({yrstr+"_UL",abs(eta),pt,"sf"}), 
-	     muonhltcorr->evaluate({yrstr+"_UL",abs(eta),pt,"systup"}), 
+      //we have lookup tables we might put it into correction format.
+
+      hlt = {1,1,1};
+      /*hlt = {muonhltcorr->evaluate({yrstr+"_UL",abs(eta),pt,"sf"}),
+	     muonhltcorr->evaluate({yrstr+"_UL",abs(eta),pt,"systup"}),
 	     muonhltcorr->evaluate({yrstr+"_UL",abs(eta),pt,"systdown"})};*/
     }
     return hlt;

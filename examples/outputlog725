@@ -1,0 +1,183 @@
+root://cms-xrd-global.cern.ch//store/mc/Run3Summer22NanoAODv12/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2520000/15706935-76fd-46e9-a730-e6b055dc36a3.root
+input_line_135:9:1: error: expected function body after function declarator
+0{
+^
+
+[36mRestFrames v1.0.0 -- Developed by Christopher Rogan (crogan@cern.ch)
+                     Copyright (c) 2014-2018, Christopher Rogan
+                     http://RestFrames.com
+[0m
+[32m<INFO>    RestFrames Global: [0mInstantiating RestFramesHandler of thread 0...
+[32m<INFO>    RestFrames Global: [0m...Successfully initialized reconstruction trees
+[32m<INFO>    RestFrames Global: [0m...Successfully initialized analysis
+[32m<INFO>    RestFrames Global: [0m--------------Now testing thread 1's handler------------
+[32m<INFO>    RestFrames Global: [0mTesting a rest frames handler object call, successful
+[32m<INFO>    RestFrames Global: [0m--------------All threads tested------------
+Input File Path: test_mc_22.txt
+TestNum 1: 0 and TestNum 2: 0
+Number of Entries: 0
+Sample Name: root://cms-xrd-global.cern.ch//store/mc/Run3Summer22NanoAODv12/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2520000/15706935-76fd-46e9-a730-e6b055dc36a3.root
+
+Tprime_RestFrames_Container rfc = Tprime_RestFrames_Container(1);
+Successfully initialized RestFrame handlers
+Opening files: [............................................................] 0/1Warning in <TClass::Init>: no dictionary for class __pair_base<edm::Hash<1>,edm::ParameterSetBlob> is available
+Opening files: [############################################################] 1/1
+input_line_282:2:103: error: use of undeclared identifier 'muoncorr'
+auto lambda47 = [](const float var0, const float var1, const bool var2){return recofunc(electroncorr, muoncorr, yrstr, var0, var1, var2)
+                                                                                                      ^
+input_line_282:2:113: error: use of undeclared identifier 'yrstr'
+auto lambda47 = [](const float var0, const float var1, const bool var2){return recofunc(electroncorr, muoncorr, yrstr, var0, var1, var2)
+                                                                                                                ^
+input_line_286:2:103: error: use of undeclared identifier 'muoncorr'
+auto lambda47 = [](const float var0, const float var1, const bool var2){return recofunc(electroncorr, muoncorr, yrstr, var0, var1, var2)
+                                                                                                      ^
+input_line_286:2:113: error: use of undeclared identifier 'yrstr'
+auto lambda47 = [](const float var0, const float var1, const bool var2){return recofunc(electroncorr, muoncorr, yrstr, var0, var1, var2)
+                                                                                                                ^
+input_line_287:2:103: error: use of undeclared identifier 'muoncorr'
+auto lambda47 = [](const float var0, const float var1, const bool var2){return recofunc(electroncorr, muoncorr, yrstr, var0, var1, var2)
+                                                                                                      ^
+input_line_287:2:113: error: use of undeclared identifier 'yrstr'
+auto lambda47 = [](const float var0, const float var1, const bool var2){return recofunc(electroncorr, muoncorr, yrstr, var0, var1, var2)
+                                                                                                                ^
+LHA ID: 325300
+==========================INITIALIZED ANALYZER========================
+========================== jsonfile = ".../LumiJSON/" ========================
+jason file is = ../TIMBER/data/LumiJSON/Cert_Collisions2022_355100_362760_Golden.json
+point b
+point c
+point d
+point e
+point f
+mcname =  
+jecver = _V2 jetprompt = Summer22_23Sep2023 
+corrPU_name = Collisions2022_355100_357900_eraBCD_GoldenJson 
+ak4pt_name = Summer22_22Sep2023_JRV1_MC_PtResolution_AK4PFPuppi 
+ak4jer_name = Summer22_22Sep2023_JRV1_MC_ScaleFactor_AK4PFPuppi 
+prompt = Summer22_22Sep2023 
+ak4pf = _AK4PFPuppi 
+ak8pf = _AK8PFPuppi 
+veto_run = _RunCD_V1 
+jercrun = _RunCD 
+electroncorrset->at("Electron-ID-SF") 
+muoncorrset->at("NUM_MediumID_DEN_TrackerMuons") 
+muoncorrset->at("NUM_Mu50_or_CascadeMu100_or_HighPtTkMu100_DEN_CutBasedIdGlobalHighPt_and_TkIsoLoose") 
+jetvetocorrset->at(prompt+veto_run = Summer22_22Sep2023_RunCD_V1 ) 
+auto ak4corrL1 = ak4corrset->at( Summer22_22Sep2023_RunCD_V2 _DATA_L1FastJet _AK4PFPuppi ") 
+auto ak4corr = ak4corrset->compound().at( Summer22_22Sep2023_RunCD_V2 _DATA_L1L2L3Res _AK4PFPuppi ") 
+ak8corr = ak8corrset->compound().at( Summer22_22Sep2023_RunCD_V2 _DATA_L1L2L3Res _AK8PFPuppi )
+============ point f print end ===========
+point g
+point h - if not isMC/else
+point i
+point j
+point k
+point l
+point m
+point n
+point o
+point p
+Defining PileupWeights: pufunc(corrPU, Pileup_nTrueInt)
+Filtering Event has jets: nJet > 0 && nFatJet > 0
+Defining Electron_cutBasedIdNoIso_tight: Electron_cutBasedIdNoIso_tight(nElectron, Electron_vidNestedWPBitmap)
+Defining TPassMu: abs(Muon_eta)<2.4 && Muon_mediumId==1 && Muon_miniIsoId>=3 && abs(Muon_dz) < 0.5 && Muon_dxy < 0.2
+Defining TPassEl: (abs(Electron_eta)<1.442 || (abs(Electron_eta)>1.566 && abs(Electron_eta)<2.5)) && Electron_cutBasedIdNoIso_tight==1 && Electron_miniPFRelIso_all<0.1
+Defining VetoMu: TPassMu && (Muon_pt>25)
+Defining VetoEl: TPassEl && (Electron_pt>25)
+Defining SignalIsoMu: TPassMu && (Muon_pt>=55)
+Defining SignalIsoEl: TPassEl && (Electron_pt>=55)
+Defining nVetoLep: (int) (Sum(VetoMu)+Sum(VetoEl))
+Defining SMuon_pt: Muon_pt[SignalIsoMu == true]
+Defining SMuon_eta: Muon_eta[SignalIsoMu == true]
+Defining SMuon_phi: Muon_phi[SignalIsoMu == true]
+Defining SMuon_mass: Muon_mass[SignalIsoMu == true]
+Defining SElectron_pt: Electron_pt[SignalIsoEl == true]
+Defining SElectron_eta: Electron_eta[SignalIsoEl == true]
+Defining SElectron_phi: Electron_phi[SignalIsoEl == true]
+Defining SElectron_mass: Electron_mass[SignalIsoEl == true]
+Defining Muon_P4: fVectorConstructor(Muon_pt,Muon_eta,Muon_phi,Muon_mass)
+Defining SMuon_P4: fVectorConstructor(SMuon_pt,SMuon_eta,SMuon_phi,SMuon_mass)
+Defining SElectron_P4: fVectorConstructor(SElectron_pt,SElectron_eta,SElectron_phi,SElectron_mass)
+Defining SMuon_jetIdx: Muon_jetIdx[SignalIsoMu == true]
+Defining SElectron_jetIdx: Electron_jetIdx[SignalIsoEl]
+Defining nSignalIsoMu: (int) Sum(SignalIsoMu)
+Defining nSignalIsoEl: (int) Sum(SignalIsoEl)
+Defining VetoIsoMu: (VetoMu == true && Muon_pt < 55)
+Defining VetoIsoEl: (VetoEl == true && Electron_pt < 55)
+Defining nVetoIsoLep: (int) (Sum(VetoIsoMu)+Sum(VetoIsoEl))
+Defining isMu: (nMuon>0) && (HLT_Mu50+tkmutrig) && (nSignalIsoMu==1) && (nVetoIsoLep==0) && (nElectron == 0 || nSignalIsoEl == 0)
+Defining isEl: (nElectron>0) && (HLT_Ele15_IsoVVVL_PFHT450 || HLT_Photon200 || HLT_Ele115_CaloIdVT_GsfTrkIdT || HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165) && (nSignalIsoEl==1) && (nVetoIsoLep==0) && (nMuon == 0 || nSignalIsoMu == 0)
+Defining assignleps: assign_leps(isMu,isEl,SignalIsoMu,SignalIsoEl,Muon_pt,Muon_eta,Muon_phi,Muon_mass,Muon_miniPFRelIso_all,Electron_pt,Electron_eta,Electron_phi,Electron_mass,Electron_miniPFRelIso_all)
+Defining lepton_pt: assignleps[0]
+Defining lepton_eta: assignleps[1]
+Defining lepton_phi: assignleps[2]
+Defining lepton_mass: assignleps[3]
+Defining lepton_miniIso: assignleps[4]
+Filtering Event is either muon or electron: isMu || isEl
+Defining Jet_P4: fVectorConstructor(Jet_pt,Jet_eta,Jet_phi,Jet_mass)
+Defining FatJet_P4: fVectorConstructor(FatJet_pt,FatJet_eta,FatJet_phi,FatJet_mass)
+Defining Jet_EmEF: Jet_neEmEF + Jet_chEmEF
+Defining DummyZero: float(0.0)
+Defining GenJet_P4: fVectorConstructor(GenJet_pt,GenJet_eta,GenJet_phi,GenJet_mass)
+Defining cleanedJets: cleanJetsMC(debug,campaign,jesvar,ak4corr,ak4corrL1,ak4corrUnc,ak4ptres,ak4jer,ak8corr,ak8corrUnc,Jet_P4,Jet_rawFactor,Jet_muonSubtrFactor,Jet_area,Jet_EmEF,Jet_jetId,GenJet_P4,Jet_genJetIdx,SMuon_P4,SMuon_jetIdx,SElectron_P4,SElectron_jetIdx,Rho_fixedGridRhoFastjetAll,DummyZero,DummyZero)
+Defining cleanMets: cleanJetsMC(debug,campaign,jesvar,ak4corr,ak4corrL1,ak4corrUnc,ak4ptres,ak4jer,ak8corr,ak8corrUnc,Jet_P4,Jet_rawFactor,Jet_muonSubtrFactor,Jet_area,Jet_EmEF,Jet_jetId,GenJet_P4,Jet_genJetIdx,SMuon_P4,SMuon_jetIdx,SElectron_P4,SElectron_jetIdx,Rho_fixedGridRhoFastjetAll,RawMET_pt,RawMET_phi)
+Defining GenJetAK8_P4: fVectorConstructor(GenJetAK8_pt,GenJetAK8_eta,GenJetAK8_phi,GenJetAK8_mass)
+Defining cleanFatJets: cleanJetsMC(debug,campaign,jesvar,ak4corr,ak4corrL1,ak4corrUnc,ak4ptres,ak4jer,ak8corr,ak8corrUnc,FatJet_P4,FatJet_rawFactor,FatJet_rawFactor,FatJet_area,FatJet_area,FatJet_jetId,GenJetAK8_P4,FatJet_genJetAK8Idx,SMuon_P4,SMuon_jetIdx,SElectron_P4,SElectron_jetIdx,Rho_fixedGridRhoFastjetAll,DummyZero,DummyZero)
+Defining cleanJet_pt: cleanedJets[0]
+Defining cleanJet_eta: cleanedJets[1]
+Defining cleanJet_phi: cleanedJets[2]
+Defining cleanJet_mass: cleanedJets[3]
+Defining cleanFatJet_pt: cleanFatJets[0]
+Defining cleanFatJet_eta: cleanFatJets[1]
+Defining cleanFatJet_phi: cleanFatJets[2]
+Defining cleanFatJet_mass: cleanFatJets[3]
+Defining DR_lepJets: DeltaR_VecAndFloat(cleanJet_eta,cleanJet_phi,lepton_eta,lepton_phi)
+Defining ptrel_lepJets: ptRel(cleanJet_pt,cleanJet_eta,cleanJet_phi,cleanJet_mass,lepton_pt,lepton_eta,lepton_phi,lepton_mass)
+Defining goodcleanJets: cleanJet_pt > 30 && abs(cleanJet_eta) < 2.4 && Jet_jetId > 1 && (DR_lepJets > 0.4 || ptrel_lepJets > 20)
+Defining gcJet_HT: Sum(cleanJet_pt[goodcleanJets == true])
+Defining DR_lepFatJets: DeltaR_VecAndFloat(FatJet_eta,FatJet_phi,lepton_eta,lepton_phi)
+Defining ptrel_lepFatJets: ptRel(FatJet_pt,FatJet_eta,FatJet_phi,FatJet_mass,lepton_pt,lepton_eta,lepton_phi,lepton_mass)
+Defining goodcleanFatJets: FatJet_pt > 200 && abs(FatJet_eta) < 2.4 && FatJet_jetId > 1 && (DR_lepFatJets > 0.8 || ptrel_lepFatJets > 20)
+Defining NFatJets: (int) Sum(goodcleanFatJets)
+Defining gcJet_pt_unsort: cleanJet_pt[goodcleanJets == true]
+Defining gcJet_ptargsort: ROOT::VecOps::Reverse(ROOT::VecOps::Argsort(gcJet_pt_unsort))
+Defining gcJet_pt: reorder(gcJet_pt_unsort,gcJet_ptargsort)
+Defining gcJet_eta: reorder(cleanJet_eta[goodcleanJets == true],gcJet_ptargsort)
+Defining gcJet_phi: reorder(cleanJet_phi[goodcleanJets == true],gcJet_ptargsort)
+Defining gcJet_mass: reorder(cleanJet_mass[goodcleanJets == true],gcJet_ptargsort)
+Defining gcJet_vetomap: jetvetofunc(jetvetocorr, gcJet_eta, gcJet_phi)
+Defining gcFatJet_pt_unsort: FatJet_pt[goodcleanFatJets == true]
+Defining gcFatJet_ptargsort: ROOT::VecOps::Reverse(ROOT::VecOps::Argsort(gcFatJet_pt_unsort))
+Defining gcFatJet_pt: reorder(gcFatJet_pt_unsort,gcFatJet_ptargsort)
+Defining gcFatJet_eta: reorder(FatJet_eta[goodcleanFatJets == true],gcFatJet_ptargsort)
+Defining gcFatJet_phi: reorder(FatJet_phi[goodcleanFatJets == true],gcFatJet_ptargsort)
+Defining gcFatJet_mass: reorder(FatJet_mass[goodcleanFatJets == true],gcFatJet_ptargsort)
+Defining gcFatJet_sdmass: reorder(FatJet_msoftdrop[goodcleanFatJets == true],gcFatJet_ptargsort)
+Defining gcFatJet_vetomap: jetvetofunc(jetvetocorr, gcFatJet_eta, gcFatJet_phi)
+Defining Isolated_AK4: standalone_Jet(gcJet_eta, gcJet_phi, gcFatJet_eta, gcFatJet_phi)
+Defining leptonRecoSF: recofunc(electroncorr, muoncorr, yrstr, lepton_pt, lepton_eta, isEl)
+Traceback (most recent call last):
+  File "/uscms_data/d3/izquierd/PURSUE/CMSSW_12_3_5/src/CAMILA/RJR2024/TIMBER-CP/examples/Tprime1lep2to3.py", line 560, in <module>
+    analyze(shift)
+  File "/uscms_data/d3/izquierd/PURSUE/CMSSW_12_3_5/src/CAMILA/RJR2024/TIMBER-CP/examples/Tprime1lep2to3.py", line 478, in analyze
+    newNode = a.ActiveNode.Apply(jVars)
+  File "/uscms_data/d3/izquierd/PURSUE/CMSSW_12_3_5/src/CAMILA/RJR2024/TIMBER-CP/TIMBER/Analyzer.py", line 1592, in Apply
+    node = node.Define(v,var)
+  File "/uscms_data/d3/izquierd/PURSUE/CMSSW_12_3_5/src/CAMILA/RJR2024/TIMBER-CP/TIMBER/Analyzer.py", line 1533, in Define
+    newNode = Node(name,self.DataFrame.Define(name,var),children=[],parent=self,action=var,nodetype=newNodeType)
+cppyy.gbl.std.runtime_error: Template method resolution failed:
+  ROOT::RDF::RInterface<ROOT::Detail::RDF::RJittedFilter,void> ROOT::RDF::RInterface<ROOT::Detail::RDF::RJittedFilter,void>::Define(basic_string_view<char,char_traits<char> > name, basic_string_view<char,char_traits<char> > expression) =>
+    runtime_error: 
+RDataFrame: An error occurred during just-in-time compilation. The lines above might indicate the cause of the crash
+ All RDF objects that have not run an event loop yet should be considered in an invalid state.
+
+  ROOT::RDF::RInterface<ROOT::Detail::RDF::RJittedFilter,void> ROOT::RDF::RInterface<ROOT::Detail::RDF::RJittedFilter,void>::Define(basic_string_view<char,char_traits<char> > name, basic_string_view<char,char_traits<char> > expression) =>
+    runtime_error: 
+RDataFrame: An error occurred during just-in-time compilation. The lines above might indicate the cause of the crash
+ All RDF objects that have not run an event loop yet should be considered in an invalid state.
+
+  ROOT::RDF::RInterface<ROOT::Detail::RDF::RJittedFilter,void> ROOT::RDF::RInterface<ROOT::Detail::RDF::RJittedFilter,void>::Define(basic_string_view<char,char_traits<char> > name, basic_string_view<char,char_traits<char> > expression) =>
+    runtime_error: 
+RDataFrame: An error occurred during just-in-time compilation. The lines above might indicate the cause of the crash
+ All RDF objects that have not run an event loop yet should be considered in an invalid state.
+

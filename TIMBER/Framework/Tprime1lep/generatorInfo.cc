@@ -6,7 +6,7 @@ using namespace std;
 
 // ttbar background mass CALCULATOR:
 int genttbarMassCalc(string sample, unsigned int nGenPart, RVec<int> &GenPart_pdgId, RVec<float> &GenPart_mass, RVec<float> &GenPart_pt, RVec<float> &GenPart_phi, RVec<float> &GenPart_eta, RVec<short> &GenPart_genPartIdxMother, RVec<int> &GenPart_status)
-0{
+{
     int returnVar = 0;
     if (sample.find("TTTo") != std::string::npos || sample.find("Mtt") != std::string::npos)
       {

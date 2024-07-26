@@ -188,7 +188,6 @@ def analyze(jesvar):
 	ROOT.gInterpreter.ProcessLine('initialize(campaign);')
 # ------------------ correctionsLib corrections ------------------
 	print ("point c")
-#CAMI: check where else yrstr is used, change to "year"
 
 	ak4pf = "_AK4PFPuppi"
 	ak8pf = "_AK8PFPuppi"
@@ -204,6 +203,8 @@ def analyze(jesvar):
 
 	ak4pt_name = prompt + mcname + "_JRV1_MC_PtResolution" + ak4pf;
 	ak4jer_name = prompt + mcname + "_JRV1_MC_ScaleFactor" + ak4pf;
+#	ak8pt_name = prompt + mcname + "_JRV1_MC_PtResolution" + ak8pf;
+#	ak8jer_name = prompt + mcname + "_JRV1_MC_ScaleFactor" + ak8pf;
 
 	print ("point e")
 #is it ok that I ".Declare" year & campaign twice? once in the block above "initialize" -- CAMI
@@ -223,7 +224,7 @@ def analyze(jesvar):
 
 	print ("point f")
 
-	print ("mcname =",mcname,"\njecver =",jecver, "jetprompt =",jetprompt,"\ncorrPU_name =",corrPU_name,"\nak4pt_name =",ak4pt_name,"\nak4jer_name =",ak4jer_name,"\nprompt =",prompt,"\nak4pf =",ak4pf,"\nak8pf =",ak8pf,"\nveto_run =",veto_run,"\njercrun =",jercrun,"\nelectroncorrset->at(\"Electron-ID-SF\") \nmuoncorrset->at(\"NUM_MediumID_DEN_TrackerMuons\") \nmuoncorrset->at(\"NUM_Mu50_or_CascadeMu100_or_HighPtTkMu100_DEN_CutBasedIdGlobalHighPt_and_TkIsoLoose\") \njetvetocorrset->at(prompt+veto_run =",prompt+veto_run,")","\nauto ak4corrL1 = ak4corrset->at(",prompt + jercrun + jecver,"_DATA_L1FastJet",ak4pf,"\") \nauto ak4corr = ak4corrset->compound().at(",prompt + jercrun + jecver,"_DATA_L1L2L3Res",ak4pf,"\") \nak8corr = ak8corrset->compound().at(",prompt + jercrun + jecver,"_DATA_L1L2L3Res",ak8pf,")")
+	print ("mcname =",mcname,"\njecver =",jecver, "jetprompt =",jetprompt,"\ncorrPU_name =",corrPU_name,"\nak4pt_name (same for ak8) =",ak4pt_name,"\nak4jer_name (same for ak8) =",ak4jer_name,"\nprompt =",prompt,"\nak4pf =",ak4pf,"\nak8pf =",ak8pf,"\nveto_run =",veto_run,"\njercrun =",jercrun,"\nelectroncorrset->at(\"Electron-ID-SF\") \nmuoncorrset->at(\"NUM_MediumID_DEN_TrackerMuons\") \nmuoncorrset->at(\"NUM_Mu50_or_CascadeMu100_or_HighPtTkMu100_DEN_CutBasedIdGlobalHighPt_and_TkIsoLoose\") \njetvetocorrset->at(prompt+veto_run =",prompt+veto_run,")","\nauto ak4corrL1 = ak4corrset->at(",prompt + jercrun + jecver,"_DATA_L1FastJet",ak4pf,"\") \nauto ak4corr = ak4corrset->compound().at(",prompt + jercrun + jecver,"_DATA_L1L2L3Res",ak4pf,"\") \nak8corr = ak8corrset->compound().at(",prompt + jercrun + jecver,"_DATA_L1L2L3Res",ak8pf,")")
 
 	print("============ point f print end ===========")
 # CAMI -- in recofunc, change the muon part of the func to return value '1' instead of figuring our value from corr
@@ -238,15 +239,16 @@ def analyze(jesvar):
 	ROOT.gInterpreter.Declare("""
 	auto csetPU = correction::CorrectionSet::from_file("jsonpog-integration/POG/LUM/"+year+"_"+campaign+"/puWeights.json");
 	auto electroncorrset = correction::CorrectionSet::from_file("jsonpog-integration/POG/EGM/"+year+"_"+campaign+"/electron.json");
-	auto muoncorrset = correction::CorrectionSet::from_file("jsonpog-integration/POG/MUO/"+year+"_"+campaign+"/muon_Z.json");
+	auto muoncorrset = correction::CorrectionSet::from_file("jsonpog-integration/POG/MUO/"+year+"_"+campaign+"/muon_HighPt.json");
 	auto jetvetocorrset = correction::CorrectionSet::from_file("jsonpog-integration/POG/JME/"+year+"_"+campaign+"/jetvetomaps.json");
 
 	auto corrPU = csetPU->at(corrPU_name);
 	auto electroncorr = electroncorrset->at("Electron-ID-SF");
-	auto muonidcorr = muoncorrset->at("NUM_MediumID_DEN_TrackerMuons");
-	auto muonhltcorr = muoncorrset->at("NUM_Mu50_or_CascadeMu100_or_HighPtTkMu100_DEN_CutBasedIdGlobalHighPt_and_TkIsoLoose");
+	auto muoncorr = muoncorrset->at("NUM_GlobalMuons_DEN_TrackerMuonProbes");
+	auto muonidcorr = muoncorrset->at("NUM_TightID_DEN_GlobalMuonProbes");
 	auto jetvetocorr = jetvetocorrset->at(jetprompt+veto_run);
-	""") 
+	""")
+# auto muonhltcorr = muoncorrset->at("NUM_Mu50_or_CascadeMu100_or_HighPtTkMu100_DEN_CutBasedIdGlobalHighPt_and_TkIsoLoose"); ##CAMI DO: replace places and put a placeholder that returns "1"
 	print ("point g")
 	if not isMC:
 		ROOT.gInterpreter.Declare("""
@@ -258,7 +260,7 @@ def analyze(jesvar):
 	""")
 	else:
 		ROOT.gInterpreter.Declare("""
-			auto ak4corrset = correction::CorrectionSet::from_file("jsonpog-integration/POG/JME/"+year+"_"+campaign+"/jet_jerc.json"); 
+			auto ak4corrset = correction::CorrectionSet::from_file("jsonpog-integration/POG/JME/"+year+"_"+campaign+"/jet_jerc.json");
 			auto ak8corrset = correction::CorrectionSet::from_file("jsonpog-integration/POG/JME/"+year+"_"+campaign+"/fatJet_jerc.json");
 			auto ak4corrL1 = ak4corrset->at(prompt + jecver + "_MC_L1FastJet" + ak4pf);
 			auto ak4corrUnc = ak4corrset->at(prompt + jecver + "_MC_Total" + ak4pf);
@@ -447,11 +449,11 @@ def analyze(jesvar):
   #TODO could be a fatJetVar group
 	if isMC:
     #jVars.Add("genttbarMass", Form("genttbarMassCalc(\"%s\", nGenPart, GenPart_pdgId, GenPart_mass, GenPart_pt, GenPart_phi, GenPart_eta, GenPart_genPartIdxMother, GenPart_status)",sample.c_str()))
-		#jVars.Add("genttbarMass", "genttbarMassCalc(\""+sample+"\", nGenPart, GenPart_pdgId, GenPart_mass, GenPart_pt, GenPart_phi, GenPart_eta, GenPart_genPartIdxMother, GenPart_status)")
-		jVars.Add("leptonRecoSF", "recofunc(electroncorr, muoncorr, yrstr, lepton_pt, lepton_eta, isEl)")
-		jVars.Add("leptonIDSF", "idfunc(muonidcorr,elid_pts,elid_etas,elecidsfs,elecidsfuncs,yrstr, lepton_pt, lepton_eta, isEl)") #at(0) 
+		jVars.Add("genttbarMass", "genttbarMassCalc(\""+sample+"\", nGenPart, GenPart_pdgId, GenPart_mass, GenPart_pt, GenPart_phi, GenPart_eta, GenPart_genPartIdxMother, GenPart_status)")
+		jVars.Add("leptonRecoSF", "recofunc(electroncorr, muoncorr, campaign, lepton_pt, lepton_eta, isEl)")
+		jVars.Add("leptonIDSF", "idfunc(muonidcorr,elid_pts,elid_etas,elecidsfs,elecidsfuncs,campaign, lepton_pt, lepton_eta, isEl)") #at(0) 
 		jVars.Add("leptonIsoSF", "isofunc(muiso_pts,muiso_etas,muonisosfs,muonisosfunc,elid_pts,elid_etas,elecisosfs,elecisosfunc, lepton_pt, lepton_eta, isEl)")
-		jVars.Add("leptonHLTSF", "hltfunc(muonhltcorr,elhlt_pts,elhlt_etas,elechltsfs,elechltuncs,yrstr, lepton_pt, lepton_eta, isEl)")
+		jVars.Add("leptonHLTSF", "hltfunc(elhlt_pts,elhlt_etas,elechltsfs,elechltuncs,campaign, lepton_pt, lepton_eta, isEl)")
 
 # ------------------ Results ------------------
 	rframeVars = VarGroup('restFrameVars')

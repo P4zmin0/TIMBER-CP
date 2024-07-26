@@ -115,19 +115,26 @@ RVec<RVec<float>> cleanJetsMC (const bool &debug, const string &campaign, const 
     if (met > 0 && jt_em[ijet] > 0.9) continue;                                    // not these jets for MET	
     if (met > 0) jet *= (1 - jt_murf[ijet]);                                       // further correct raw to muon-substracted raw for T1.
     float rawpt = jet.Pt();
-    cout << "print 3b jet: rho = " << rho << ", rawpt = " << rawpt << ", jet.Eta = " << jet.Eta() << endl;
-    cout << "print 3c jet: jt_area[ijet] = " << jt_area[ijet] << endl;
+    //cout << "print 3b jet: rho = " << rho << ", rawpt = " << rawpt << ", jet.Eta = " << jet.Eta() << endl;
+    //cout << "print 3c jet: jt_area[ijet] = " << jt_area[ijet] << endl;
     cout << "Calling evaluate on the jescorr" << endl;
 
     if (campaign == "Summer23BPix")jes = jescorr->evaluate({jt_area[ijet],jet.Eta(),jet.Phi(),rawpt,rho}); // Data & MC get jes for 2023BPix
     else jes = jescorr->evaluate({jt_area[ijet],jet.Eta(),jet.Phi(),rawpt,rho});                 // Data & MC get jes
 
-    if (met == 0 && debug) std::cout<< "Print 4 jet, pt = " << jet.Pt() << ", phi = " << jet.Phi()<<"jes = "<<jes << std::endl;
+    //cout << "1st print after defining jes either for 23BPix or other campaigns" << endl;
+    //if (met == 0 && debug) std::cout<< "Print 4 jet, pt = " << jet.Pt() << ", phi = " << jet.Phi()<<"jes = "<<jes << std::endl;
 
-    if (met > 0) {
-    if (campaign == "Summer23BPix")jesL1 = ak4corrL1->evaluate({jt_area[ijet],jet.Eta(),jet.Phi(),rawpt,rho}); // L1-only jes for MET T1 2023BPix
-    else jesL1 = ak4corrL1->evaluate({jt_area[ijet],jet.Eta(),rawpt,rho}); // L1-only jes for MET T1
-    }
+    cout << "Calling evaluate on the ak4corrL1" << endl;
+
+    //if (met > 0) {
+    //if (campaign == "Summer23BPix")jesL1 = ak4corrL1->evaluate({jt_area[ijet],jet.Eta(),jet.Phi(),rawpt,rho}); // L1-only jes for MET T1 2023BPix
+    //else jesL1 = ak4corrL1->evaluate({jt_area[ijet],jet.Eta(),rawpt,rho}); // L1-only jes for MET T1
+    //}
+
+    if (met > 0) jesL1 = ak4corrL1->evaluate({jt_area[ijet],jet.Eta(),rawpt,rho});
+
+    cout << "print after defining jesL1 eithe for 23BPix or other campaigns" << endl;
 
     // ----- MC specific: ----- 
     float res = ak4ptres->evaluate({jet.Eta(),rawpt*jes,rho}); //argument "jes" has already been filtered by campaign -- includes phi if it's 23BPix?
@@ -198,7 +205,7 @@ RVec<RVec<float>> cleanJetsData (const bool &debug, const string &campaign,
   if (met > 0 && debug) std::cout<< "Incoming met = " << met << ", phi = " << phi << std::endl;
 
   for (unsigned int ijet = 0; ijet < jt_p4.size(); ijet++) {
-    if (met == 0 && debug) std::cout<< "Incoming jet, pt = " << jt_p4[ijet].Pt() << ", phi = " << jt_p4[ijet].Phi() << std::endl;
+    //if (met == 0 && debug) std::cout<< "Incoming jet, pt = " << jt_p4[ijet].Pt() << ", phi = " << jt_p4[ijet].Phi() << std::endl;
     TLorentzVector jet = jt_p4[ijet];
     int jetid = jt_id[ijet];
     float rf = jt_rf[ijet];
@@ -220,38 +227,36 @@ RVec<RVec<float>> cleanJetsData (const bool &debug, const string &campaign,
 	}
     }
     
-    if (met == 0 && debug) std::cout<< "Post Lepton jet, pt = " << jet.Pt() << ", phi = " << jet.Phi() << std::endl;
+    //if (met == 0 && debug) std::cout<< "Post Lepton jet, pt = " << jet.Pt() << ", phi = " << jet.Phi() << std::endl;
 
     float jes = 1.0; float jesL1 = 1.0;
     jet = jet * (1 - rf);                                                         // rf = 0 if JEC undone above
     
-    if (met == 0 && debug) std::cout<< "Print 3 jet, pt = " << jet.Pt() << ", phi = " << jet.Phi() << std::endl;
-    if (met > 0){cout<<"about to so mets"<<endl;}
+    //if (met == 0 && debug) std::cout<< "Print 3 jet, pt = " << jet.Pt() << ", phi = " << jet.Phi() << std::endl;
+    //if (met > 0){cout<<"about to so mets"<<endl;}
     if (met > 0 && jt_em[ijet] > 0.9) continue;     // not these jets for MET
     if (met > 0) jet *= (1 - jt_murf[ijet]);        // further correct raw to muon-substracted raw for T1.
     float rawpt = jet.Pt();
     //cout << "print 3b jet: rho = " << rho << ", rawpt = " << rawpt << ", jet.Eta = " << jet.Eta() << endl;
     //cout << "print 3c jet: jt_area[ijet] = " << jt_area[ijet] << endl;
-    cout << "Calling evaluate on the jescorr" << endl;
+    //cout << "Calling evaluate on the jescorr" << endl;
 
-    if (campaign == "Summer23BPix") { jes = jescorr->evaluate({jt_area[ijet],jet.Eta(),jet.Phi(),rawpt,rho}); // Data & MC get jes for 2023BPix
-    }
-    else { jes = jescorr->evaluate({jt_area[ijet],jet.Eta(),rawpt,rho}); // Data & MC get jes for other campaigns
-    }
+    if (campaign == "Summer23BPix")jes = jescorr->evaluate({jt_area[ijet],jet.Eta(),jet.Phi(),rawpt,rho}); // Data & MC get jes for 2023BPix
+    else jes = jescorr->evaluate({jt_area[ijet],jet.Eta(),rawpt,rho}); // Data & MC get jes for other campaigns
 
-    if (debug) cout<< "Print 4 jet, pt = " << jet.Pt() << ", phi = " << jet.Phi()<<"jes = "<<jes << std::endl;
+    //if (debug) cout<< "Print 4 jet, pt = " << jet.Pt() << ", phi = " << jet.Phi()<<"jes = "<<jes << std::endl;
 
-//    if (met > 0) {
-  //    if (campaign == "Summer23BPix") jesL1 = ak4corrL1->evaluate({jt_area[ijet],jet.Eta(),rawpt,rho}); // L1-only jes for MET T1 23BPix
-    //  else  jesL1 = ak4corrL1->evaluate({jt_area[ijet],jet.Eta(),rawpt,rho});  // L1-only jes for MET T1 other campigns
-   // }
+    //if (met > 0) {
+      //if (campaign == "Summer23BPix") jesL1 = ak4corrL1->evaluate({jt_area[ijet],jet.Eta(),rawpt,rho}); // L1-only jes for MET T1 23BPix
+      //else  jesL1 = ak4corrL1->evaluate({jt_area[ijet],jet.Eta(),rawpt,rho});  // L1-only jes for MET T1 other campigns
+    //}
 
     if (met>0) jesL1 = ak4corrL1->evaluate({jt_area[ijet],jet.Eta(),rawpt,rho});
 
     TLorentzVector jetL1 = jet*jesL1;
     jet = jet*jes; 		                                                  // evals to jes*1 for data.
 
-    if (met == 0 && debug) std::cout<< "Print last jet, pt = " << jet.Pt() << ", phi = " << jet.Phi() << std::endl;
+    //if (met == 0 && debug) std::cout<< "Print last jet, pt = " << jet.Pt() << ", phi = " << jet.Phi() << std::endl;
 
     rf = 1.0 - 1.0/jes;
     if (jet.Pt() > 15) {

@@ -1,0 +1,20 @@
+root://cms-xrd-global.cern.ch//store/data/Run2022C/EGamma/NANOAOD/22Sep2023-v1/2530000/009621ee-c6b2-4043-99c3-7cb4ab2c7264.root
+
+[36mRestFrames v1.0.0 -- Developed by Christopher Rogan (crogan@cern.ch)
+                     Copyright (c) 2014-2018, Christopher Rogan
+                     http://RestFrames.com
+[0m
+[32m<INFO>    RestFrames Global: [0mInstantiating RestFramesHandler of thread 0...
+[32m<INFO>    RestFrames Global: [0m...Successfully initialized reconstruction trees
+[32m<INFO>    RestFrames Global: [0m...Successfully initialized analysis
+[32m<INFO>    RestFrames Global: [0m--------------Now testing thread 1's handler------------
+[32m<INFO>    RestFrames Global: [0mTesting a rest frames handler object call, successful
+[32m<INFO>    RestFrames Global: [0m--------------All threads tested------------
+Input File Path: test_dataset_22.txt
+TestNum 1: 0 and TestNum 2: 0
+Number of Entries: 0
+Sample Name: root://cms-xrd-global.cern.ch//store/data/Run2022C/EGamma/NANOAOD/22Sep2023-v1/2530000/009621ee-c6b2-4043-99c3-7cb4ab2c7264.root
+
+Tprime_RestFrames_Container rfc = Tprime_RestFrames_Container(1);
+Successfully initialized RestFrame handlers
+Opening files: [............................................................] 0/1Warning in <TClass::Init>: no dictionary for class __pair_base<edm::Hash<1>,edm::ParameterSetBlob> is available

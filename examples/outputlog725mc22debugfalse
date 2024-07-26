@@ -1,0 +1,291 @@
+root://cms-xrd-global.cern.ch//store/mc/Run3Summer22NanoAODv12/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2520000/15706935-76fd-46e9-a730-e6b055dc36a3.root
+
+[36mRestFrames v1.0.0 -- Developed by Christopher Rogan (crogan@cern.ch)
+                     Copyright (c) 2014-2018, Christopher Rogan
+                     http://RestFrames.com
+[0m
+[32m<INFO>    RestFrames Global: [0mInstantiating RestFramesHandler of thread 0...
+[32m<INFO>    RestFrames Global: [0m...Successfully initialized reconstruction trees
+[32m<INFO>    RestFrames Global: [0m...Successfully initialized analysis
+[32m<INFO>    RestFrames Global: [0m--------------Now testing thread 1's handler------------
+[32m<INFO>    RestFrames Global: [0mTesting a rest frames handler object call, successful
+[32m<INFO>    RestFrames Global: [0m--------------All threads tested------------
+Input File Path: test_mc_22.txt
+TestNum 1: 0 and TestNum 2: 0
+Number of Entries: 0
+Sample Name: root://cms-xrd-global.cern.ch//store/mc/Run3Summer22NanoAODv12/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/130X_mcRun3_2022_realistic_v5-v2/2520000/15706935-76fd-46e9-a730-e6b055dc36a3.root
+
+Tprime_RestFrames_Container rfc = Tprime_RestFrames_Container(1);
+Successfully initialized RestFrame handlers
+Opening files: [............................................................] 0/1Warning in <TClass::Init>: no dictionary for class __pair_base<edm::Hash<1>,edm::ParameterSetBlob> is available
+Opening files: [############################################################] 1/1
+Calling evaluate on the jescorr
+RDataFrame::Run: event loop was interrupted
+ *** Break *** segmentation violation
+
+
+
+===========================================================
+There was a crash.
+This is the entire stack trace of all threads:
+===========================================================
+
+Thread 7 (Thread 0x7f2c731d6700 (LWP 848124) "python3"):
+#0  0x00007f2c9eb7edd6 in do_futex_wait.constprop () from /lib64/libpthread.so.0
+#1  0x00007f2c9eb7eec8 in __new_sem_wait_slow.constprop.0 () from /lib64/libpthread.so.0
+#2  0x00007f2c77198586 in XrdCl::JobManager::RunJobs() () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdCl.so.3
+#3  0x00007f2c77198649 in RunRunnerThread () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdCl.so.3
+#4  0x00007f2c9eb761ca in start_thread () from /lib64/libpthread.so.0
+#5  0x00007f2c9e0478d3 in clone () from /lib64/libc.so.6
+
+Thread 6 (Thread 0x7f2c739d7700 (LWP 848123) "python3"):
+#0  0x00007f2c9eb7edd6 in do_futex_wait.constprop () from /lib64/libpthread.so.0
+#1  0x00007f2c9eb7eec8 in __new_sem_wait_slow.constprop.0 () from /lib64/libpthread.so.0
+#2  0x00007f2c77198586 in XrdCl::JobManager::RunJobs() () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdCl.so.3
+#3  0x00007f2c77198649 in RunRunnerThread () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdCl.so.3
+#4  0x00007f2c9eb761ca in start_thread () from /lib64/libpthread.so.0
+#5  0x00007f2c9e0478d3 in clone () from /lib64/libc.so.6
+
+Thread 5 (Thread 0x7f2c741d8700 (LWP 848122) "python3"):
+#0  0x00007f2c9eb7edd6 in do_futex_wait.constprop () from /lib64/libpthread.so.0
+#1  0x00007f2c9eb7eec8 in __new_sem_wait_slow.constprop.0 () from /lib64/libpthread.so.0
+#2  0x00007f2c77198586 in XrdCl::JobManager::RunJobs() () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdCl.so.3
+#3  0x00007f2c77198649 in RunRunnerThread () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdCl.so.3
+#4  0x00007f2c9eb761ca in start_thread () from /lib64/libpthread.so.0
+#5  0x00007f2c9e0478d3 in clone () from /lib64/libc.so.6
+
+Thread 4 (Thread 0x7f2c749d9700 (LWP 848121) "python3"):
+#0  0x00007f2c9eb801b0 in nanosleep () from /lib64/libpthread.so.0
+#1  0x00007f2c772850ff in XrdSysTimer::Wait(int) () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdUtils.so.3
+#2  0x00007f2c77107f23 in XrdCl::TaskManager::RunTasks() () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdCl.so.3
+#3  0x00007f2c77108079 in RunRunnerThread () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdCl.so.3
+#4  0x00007f2c9eb761ca in start_thread () from /lib64/libpthread.so.0
+#5  0x00007f2c9e0478d3 in clone () from /lib64/libc.so.6
+
+Thread 3 (Thread 0x7f2c751da700 (LWP 848120) "python3"):
+#0  0x00007f2c9e14d307 in epoll_wait () from /lib64/libc.so.6
+#1  0x00007f2c7727f522 in XrdSys::IOEvents::PollE::Begin(XrdSysSemaphore*, int&, char const**) () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdUtils.so.3
+#2  0x00007f2c7727bcad in XrdSys::IOEvents::BootStrap::Start(void*) () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdUtils.so.3
+#3  0x00007f2c77284808 in XrdSysThread_Xeq () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdUtils.so.3
+#4  0x00007f2c9eb761ca in start_thread () from /lib64/libpthread.so.0
+#5  0x00007f2c9e0478d3 in clone () from /lib64/libc.so.6
+
+Thread 2 (Thread 0x7f2c80c92700 (LWP 848098) "python3"):
+#0  0x00007f2c9eb7c878 in pthread_cond_timedwait
+
+GLIBC_2.3.2 () from /lib64/libpthread.so.0
+#1  0x00007f2c9f14a339 in PyCOND_TIMEDWAIT (us=<optimized out>, mut=0x7f2c9f35f010 <_PyRuntime+432>, cond=0x7f2c9f35efe0 <_PyRuntime+384>) at Python/condvar.h:73
+#2  take_gil (tstate=tstate
+entry=0x63bccb0) at Python/ceval_gil.h:247
+#3  0x00007f2c9f14a77e in PyEval_RestoreThread (tstate=tstate
+entry=0x63bccb0) at Python/ceval.c:467
+#4  0x00007f2c9f1f1c72 in pysleep (secs=<optimized out>) at ./Modules/timemodule.c:2037
+#5  time_sleep (self=<optimized out>, obj=<optimized out>) at ./Modules/timemodule.c:365
+#6  0x00007f2c9f0ad673 in cfunction_vectorcall_O (func=0x7f2c9f4283b0, args=0x7f2c80fd49e0, nargsf=<optimized out>, kwnames=<optimized out>) at Objects/methodobject.c:512
+#7  0x00007f2c9f024581 in _PyObject_VectorcallTstate (kwnames=0x0, nargsf=<optimized out>, args=0x7f2c80fd49e0, callable=0x7f2c9f4283b0, tstate=0x63bccb0) at ./Include/cpython/abstract.h:118
+#8  PyObject_Vectorcall (kwnames=0x0, nargsf=<optimized out>, args=0x7f2c80fd49e0, callable=0x7f2c9f4283b0) at ./Include/cpython/abstract.h:127
+#9  call_function (kwnames=0x0, oparg=<optimized out>, pp_stack=<synthetic pointer>, tstate=0x63bccb0) at Python/ceval.c:5072
+#10 _PyEval_EvalFrameDefault (tstate=<optimized out>, f=<optimized out>, throwflag=<optimized out>) at Python/ceval.c:3487
+#11 0x00007f2c9f14b54c in _PyEval_EvalFrame (throwflag=0, f=0x7f2c80fd4860, tstate=0x63bccb0) at ./Include/internal/pycore_ceval.h:40
+#12 _PyEval_EvalCode (tstate=tstate
+entry=0x63bccb0, _co=_co
+entry=0x7f2c84e560e0, globals=<optimized out>, locals=locals
+entry=0x0, args=<optimized out>, argcount=1, kwnames=0x0, kwargs=0x7f2c9e00c7b0, kwcount=0, kwstep=1, defs=0x0, defcount=0, kwdefs=0x0, closure=0x0, name=0x7f2c84e8a5d0, qualname=0x7f2c8ebfe260) at Python/ceval.c:4327
+#13 0x00007f2c9f0667de in _PyFunction_Vectorcall (func=<optimized out>, stack=<optimized out>, nargsf=<optimized out>, kwnames=<optimized out>) at Objects/call.c:396
+#14 0x00007f2c9f021a66 in do_call_core (kwdict=0x7f2c9de93900, callargs=0x7f2c9e00c790, func=0x7f2c9dfda280, tstate=0x63bccb0) at Python/ceval.c:5120
+#15 _PyEval_EvalFrameDefault (tstate=<optimized out>, f=<optimized out>, throwflag=<optimized out>) at Python/ceval.c:3580
+#16 0x00007f2c9f01cbab in _PyEval_EvalFrame (throwflag=0, f=0x7f2c81190ac0, tstate=0x63bccb0) at ./Include/internal/pycore_ceval.h:40
+#17 function_code_fastcall (tstate=0x63bccb0, co=<optimized out>, args=<optimized out>, nargs=1, globals=<optimized out>) at Objects/call.c:330
+#18 0x00007f2c9f0244bc in _PyObject_VectorcallTstate (kwnames=0x0, nargsf=<optimized out>, args=0x7f2c9df437b8, callable=0x7f2c9de0dd30, tstate=0x63bccb0) at ./Include/cpython/abstract.h:118
+#19 PyObject_Vectorcall (kwnames=0x0, nargsf=<optimized out>, args=0x7f2c9df437b8, callable=0x7f2c9de0dd30) at ./Include/cpython/abstract.h:127
+#20 call_function (kwnames=0x0, oparg=<optimized out>, pp_stack=<synthetic pointer>, tstate=0x63bccb0) at Python/ceval.c:5072
+#21 _PyEval_EvalFrameDefault (tstate=<optimized out>, f=<optimized out>, throwflag=<optimized out>) at Python/ceval.c:3504
+#22 0x00007f2c9f01cbab in _PyEval_EvalFrame (throwflag=0, f=0x7f2c9df43640, tstate=0x63bccb0) at ./Include/internal/pycore_ceval.h:40
+#23 function_code_fastcall (tstate=0x63bccb0, co=<optimized out>, args=<optimized out>, nargs=1, globals=<optimized out>) at Objects/call.c:330
+#24 0x00007f2c9f0244bc in _PyObject_VectorcallTstate (kwnames=0x0, nargsf=<optimized out>, args=0x7f2c9df1ddf8, callable=0x7f2c9dd9a040, tstate=0x63bccb0) at ./Include/cpython/abstract.h:118
+#25 PyObject_Vectorcall (kwnames=0x0, nargsf=<optimized out>, args=0x7f2c9df1ddf8, callable=0x7f2c9dd9a040) at ./Include/cpython/abstract.h:127
+#26 call_function (kwnames=0x0, oparg=<optimized out>, pp_stack=<synthetic pointer>, tstate=0x63bccb0) at Python/ceval.c:5072
+#27 _PyEval_EvalFrameDefault (tstate=<optimized out>, f=<optimized out>, throwflag=<optimized out>) at Python/ceval.c:3504
+#28 0x00007f2c9f01cbab in _PyEval_EvalFrame (throwflag=0, f=0x7f2c9df1dc80, tstate=0x63bccb0) at ./Include/internal/pycore_ceval.h:40
+#29 function_code_fastcall (tstate=0x63bccb0, co=<optimized out>, args=<optimized out>, nargs=1, globals=<optimized out>) at Objects/call.c:330
+#30 0x00007f2c9f0698fc in _PyObject_VectorcallTstate (kwnames=0x0, nargsf=1, args=0x7f2c80c91e48, callable=0x7f2c9de0ddc0, tstate=0x63bccb0) at ./Include/cpython/abstract.h:118
+#31 method_vectorcall (method=<optimized out>, args=0x7f2c9f4eb058, nargsf=<optimized out>, kwnames=0x0) at Objects/classobject.c:61
+#32 0x00007f2c9f1f2bd9 in t_bootstrap (boot_raw=0x7f2c80c94a50) at ./Modules/_threadmodule.c:1040
+#33 0x00007f2c9f199f37 in pythread_wrapper (arg=<optimized out>) at Python/thread_pthread.h:236
+#34 0x00007f2c9eb761ca in start_thread () from /lib64/libpthread.so.0
+#35 0x00007f2c9e0478d3 in clone () from /lib64/libc.so.6
+
+Thread 1 (Thread 0x7f2c9f57ab80 (LWP 848063) "python3"):
+#0  0x00007f2c9e115e42 in waitpid () from /lib64/libc.so.6
+#1  0x00007f2c9e069747 in do_system () from /lib64/libc.so.6
+#2  0x00007f2c9da166db in TUnixSystem::StackTrace() () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libCore.so
+#3  0x00007f2c9dbc0cd2 in (anonymous namespace)::TExceptionHandlerImp::HandleException(int) () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libcppyy_backend3_9.so
+#4  0x00007f2c9da13af1 in TUnixSystem::DispatchSignals(ESignals) () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libCore.so
+#5  <signal handler called>
+#6  0x00007f2c72916850 in ?? ()
+#7  0x0000000000000000 in ?? ()
+===========================================================
+
+
+The lines below might hint at the cause of the crash.
+You may get help by asking at the ROOT forum https://root.cern.ch/forum
+Only if you are really convinced it is a bug in ROOT then please submit a
+report at https://root.cern.ch/bugs Please post the ENTIRE stack trace
+from above as an attachment in addition to anything else
+that might help us fixing this issue.
+===========================================================
+#6  0x00007f2c72916850 in ?? ()
+#7  0x0000000000000000 in ?? ()
+===========================================================
+
+
+Fatal in <TBufferMerger>:  TBufferMergerFiles must be destroyed before the server
+aborting
+
+Thread 7 (Thread 0x7f2c731d6700 (LWP 848124) "python3"):
+#0  0x00007f2c9eb7edd6 in do_futex_wait.constprop () from /lib64/libpthread.so.0
+#1  0x00007f2c9eb7eec8 in __new_sem_wait_slow.constprop.0 () from /lib64/libpthread.so.0
+#2  0x00007f2c77198586 in XrdCl::JobManager::RunJobs() () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdCl.so.3
+#3  0x00007f2c77198649 in RunRunnerThread () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdCl.so.3
+#4  0x00007f2c9eb761ca in start_thread () from /lib64/libpthread.so.0
+#5  0x00007f2c9e0478d3 in clone () from /lib64/libc.so.6
+
+Thread 6 (Thread 0x7f2c739d7700 (LWP 848123) "python3"):
+#0  0x00007f2c9eb7edd6 in do_futex_wait.constprop () from /lib64/libpthread.so.0
+#1  0x00007f2c9eb7eec8 in __new_sem_wait_slow.constprop.0 () from /lib64/libpthread.so.0
+#2  0x00007f2c77198586 in XrdCl::JobManager::RunJobs() () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdCl.so.3
+#3  0x00007f2c77198649 in RunRunnerThread () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdCl.so.3
+#4  0x00007f2c9eb761ca in start_thread () from /lib64/libpthread.so.0
+#5  0x00007f2c9e0478d3 in clone () from /lib64/libc.so.6
+
+Thread 5 (Thread 0x7f2c741d8700 (LWP 848122) "python3"):
+#0  0x00007f2c9eb7edd6 in do_futex_wait.constprop () from /lib64/libpthread.so.0
+#1  0x00007f2c9eb7eec8 in __new_sem_wait_slow.constprop.0 () from /lib64/libpthread.so.0
+#2  0x00007f2c77198586 in XrdCl::JobManager::RunJobs() () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdCl.so.3
+#3  0x00007f2c77198649 in RunRunnerThread () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdCl.so.3
+#4  0x00007f2c9eb761ca in start_thread () from /lib64/libpthread.so.0
+#5  0x00007f2c9e0478d3 in clone () from /lib64/libc.so.6
+
+Thread 4 (Thread 0x7f2c749d9700 (LWP 848121) "python3"):
+#0  0x00007f2c9eb801b0 in nanosleep () from /lib64/libpthread.so.0
+#1  0x00007f2c772850ff in XrdSysTimer::Wait(int) () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdUtils.so.3
+#2  0x00007f2c77107f23 in XrdCl::TaskManager::RunTasks() () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdCl.so.3
+#3  0x00007f2c77108079 in RunRunnerThread () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdCl.so.3
+#4  0x00007f2c9eb761ca in start_thread () from /lib64/libpthread.so.0
+#5  0x00007f2c9e0478d3 in clone () from /lib64/libc.so.6
+
+Thread 3 (Thread 0x7f2c751da700 (LWP 848120) "python3"):
+#0  0x00007f2c9e14d307 in epoll_wait () from /lib64/libc.so.6
+#1  0x00007f2c7727f522 in XrdSys::IOEvents::PollE::Begin(XrdSysSemaphore*, int&, char const**) () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdUtils.so.3
+#2  0x00007f2c7727bcad in XrdSys::IOEvents::BootStrap::Start(void*) () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdUtils.so.3
+#3  0x00007f2c77284808 in XrdSysThread_Xeq () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libXrdUtils.so.3
+#4  0x00007f2c9eb761ca in start_thread () from /lib64/libpthread.so.0
+#5  0x00007f2c9e0478d3 in clone () from /lib64/libc.so.6
+
+Thread 2 (Thread 0x7f2c80c92700 (LWP 848098) "python3"):
+#0  0x00007f2c9eb7c878 in pthread_cond_timedwait
+
+GLIBC_2.3.2 () from /lib64/libpthread.so.0
+#1  0x00007f2c9f14a339 in PyCOND_TIMEDWAIT (us=<optimized out>, mut=0x7f2c9f35f010 <_PyRuntime+432>, cond=0x7f2c9f35efe0 <_PyRuntime+384>) at Python/condvar.h:73
+#2  take_gil (tstate=tstate
+entry=0x63bccb0) at Python/ceval_gil.h:247
+#3  0x00007f2c9f14a77e in PyEval_RestoreThread (tstate=tstate
+entry=0x63bccb0) at Python/ceval.c:467
+#4  0x00007f2c9f1f1c72 in pysleep (secs=<optimized out>) at ./Modules/timemodule.c:2037
+#5  time_sleep (self=<optimized out>, obj=<optimized out>) at ./Modules/timemodule.c:365
+#6  0x00007f2c9f0ad673 in cfunction_vectorcall_O (func=0x7f2c9f4283b0, args=0x7f2c80fd49e0, nargsf=<optimized out>, kwnames=<optimized out>) at Objects/methodobject.c:512
+#7  0x00007f2c9f024581 in _PyObject_VectorcallTstate (kwnames=0x0, nargsf=<optimized out>, args=0x7f2c80fd49e0, callable=0x7f2c9f4283b0, tstate=0x63bccb0) at ./Include/cpython/abstract.h:118
+#8  PyObject_Vectorcall (kwnames=0x0, nargsf=<optimized out>, args=0x7f2c80fd49e0, callable=0x7f2c9f4283b0) at ./Include/cpython/abstract.h:127
+#9  call_function (kwnames=0x0, oparg=<optimized out>, pp_stack=<synthetic pointer>, tstate=0x63bccb0) at Python/ceval.c:5072
+#10 _PyEval_EvalFrameDefault (tstate=<optimized out>, f=<optimized out>, throwflag=<optimized out>) at Python/ceval.c:3487
+#11 0x00007f2c9f14b54c in _PyEval_EvalFrame (throwflag=0, f=0x7f2c80fd4860, tstate=0x63bccb0) at ./Include/internal/pycore_ceval.h:40
+#12 _PyEval_EvalCode (tstate=tstate
+entry=0x63bccb0, _co=_co
+entry=0x7f2c84e560e0, globals=<optimized out>, locals=locals
+entry=0x0, args=<optimized out>, argcount=1, kwnames=0x0, kwargs=0x7f2c9e00c7b0, kwcount=0, kwstep=1, defs=0x0, defcount=0, kwdefs=0x0, closure=0x0, name=0x7f2c84e8a5d0, qualname=0x7f2c8ebfe260) at Python/ceval.c:4327
+#13 0x00007f2c9f0667de in _PyFunction_Vectorcall (func=<optimized out>, stack=<optimized out>, nargsf=<optimized out>, kwnames=<optimized out>) at Objects/call.c:396
+#14 0x00007f2c9f021a66 in do_call_core (kwdict=0x7f2c9de93900, callargs=0x7f2c9e00c790, func=0x7f2c9dfda280, tstate=0x63bccb0) at Python/ceval.c:5120
+#15 _PyEval_EvalFrameDefault (tstate=<optimized out>, f=<optimized out>, throwflag=<optimized out>) at Python/ceval.c:3580
+#16 0x00007f2c9f01cbab in _PyEval_EvalFrame (throwflag=0, f=0x7f2c81190ac0, tstate=0x63bccb0) at ./Include/internal/pycore_ceval.h:40
+#17 function_code_fastcall (tstate=0x63bccb0, co=<optimized out>, args=<optimized out>, nargs=1, globals=<optimized out>) at Objects/call.c:330
+#18 0x00007f2c9f0244bc in _PyObject_VectorcallTstate (kwnames=0x0, nargsf=<optimized out>, args=0x7f2c9df437b8, callable=0x7f2c9de0dd30, tstate=0x63bccb0) at ./Include/cpython/abstract.h:118
+#19 PyObject_Vectorcall (kwnames=0x0, nargsf=<optimized out>, args=0x7f2c9df437b8, callable=0x7f2c9de0dd30) at ./Include/cpython/abstract.h:127
+#20 call_function (kwnames=0x0, oparg=<optimized out>, pp_stack=<synthetic pointer>, tstate=0x63bccb0) at Python/ceval.c:5072
+#21 _PyEval_EvalFrameDefault (tstate=<optimized out>, f=<optimized out>, throwflag=<optimized out>) at Python/ceval.c:3504
+#22 0x00007f2c9f01cbab in _PyEval_EvalFrame (throwflag=0, f=0x7f2c9df43640, tstate=0x63bccb0) at ./Include/internal/pycore_ceval.h:40
+#23 function_code_fastcall (tstate=0x63bccb0, co=<optimized out>, args=<optimized out>, nargs=1, globals=<optimized out>) at Objects/call.c:330
+#24 0x00007f2c9f0244bc in _PyObject_VectorcallTstate (kwnames=0x0, nargsf=<optimized out>, args=0x7f2c9df1ddf8, callable=0x7f2c9dd9a040, tstate=0x63bccb0) at ./Include/cpython/abstract.h:118
+#25 PyObject_Vectorcall (kwnames=0x0, nargsf=<optimized out>, args=0x7f2c9df1ddf8, callable=0x7f2c9dd9a040) at ./Include/cpython/abstract.h:127
+#26 call_function (kwnames=0x0, oparg=<optimized out>, pp_stack=<synthetic pointer>, tstate=0x63bccb0) at Python/ceval.c:5072
+#27 _PyEval_EvalFrameDefault (tstate=<optimized out>, f=<optimized out>, throwflag=<optimized out>) at Python/ceval.c:3504
+#28 0x00007f2c9f01cbab in _PyEval_EvalFrame (throwflag=0, f=0x7f2c9df1dc80, tstate=0x63bccb0) at ./Include/internal/pycore_ceval.h:40
+#29 function_code_fastcall (tstate=0x63bccb0, co=<optimized out>, args=<optimized out>, nargs=1, globals=<optimized out>) at Objects/call.c:330
+#30 0x00007f2c9f0698fc in _PyObject_VectorcallTstate (kwnames=0x0, nargsf=1, args=0x7f2c80c91e48, callable=0x7f2c9de0ddc0, tstate=0x63bccb0) at ./Include/cpython/abstract.h:118
+#31 method_vectorcall (method=<optimized out>, args=0x7f2c9f4eb058, nargsf=<optimized out>, kwnames=0x0) at Objects/classobject.c:61
+#32 0x00007f2c9f1f2bd9 in t_bootstrap (boot_raw=0x7f2c80c94a50) at ./Modules/_threadmodule.c:1040
+#33 0x00007f2c9f199f37 in pythread_wrapper (arg=<optimized out>) at Python/thread_pthread.h:236
+#34 0x00007f2c9eb761ca in start_thread () from /lib64/libpthread.so.0
+#35 0x00007f2c9e0478d3 in clone () from /lib64/libc.so.6
+
+Thread 1 (Thread 0x7f2c9f57ab80 (LWP 848063) "python3"):
+#0  0x00007f2c9e115e42 in waitpid () from /lib64/libc.so.6
+#1  0x00007f2c9e069747 in do_system () from /lib64/libc.so.6
+#2  0x00007f2c9da166db in TUnixSystem::StackTrace() () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libCore.so
+#3  0x00007f2c9d8e8d4a in DefaultErrorHandler(int, bool, char const*, char const*) () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libCore.so
+#4  0x00007f2c9d9a0b2a in ErrorHandler () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libCore.so
+#5  0x00007f2c9d9a1538 in Fatal(char const*, char const*, ...) () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libCore.so
+#6  0x00007f2c9cd38d5e in ROOT::Experimental::TBufferMerger::~TBufferMerger() () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libRIO.so
+#7  0x00007f2c9cd38eb9 in ROOT::Experimental::TBufferMerger::~TBufferMerger() () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libRIO.so
+#8  0x00007f2c728d090b in ?? ()
+#9  0x00007fff0e0bd270 in ?? ()
+#10 0x000000001f6f74b0 in ?? ()
+#11 0x000000001f6f74b0 in ?? ()
+#12 0x000000001fbb3970 in ?? ()
+#13 0x00007fff0e0bd2d0 in ?? ()
+#14 0x00007f2c728eb6d2 in ?? ()
+#15 0x00007fff0e0bd2a0 in ?? ()
+#16 0x00007fff0e0bd3f0 in ?? ()
+#17 0x000000001fbb3970 in ?? ()
+#18 0x000000001fbb3970 in ?? ()
+#19 0x0000000021b9d190 in ?? ()
+#20 0x000000001fbb3970 in ?? ()
+#21 0x000000001fbb3970 in ?? ()
+#22 0x000000001f6f74b0 in ?? ()
+#23 0x0000000021b9d190 in ?? ()
+#24 0x000000001fbb3970 in ?? ()
+#25 0x00007fff0e0bd310 in ?? ()
+#26 0x00007f2c728eb8db in ?? ()
+#27 0x00007fff0e0bd368 in ?? ()
+#28 0x00007fff0e0bd368 in ?? ()
+#29 0x00007fff0e0bd310 in ?? ()
+#30 0x000000001fbb3970 in ?? ()
+#31 0x00007fff0e0bd3f0 in ?? ()
+#32 0x000000001fbb3970 in ?? ()
+#33 0x00007fff0e0bd350 in ?? ()
+#34 0x00007f2c728e99e9 in ?? ()
+#35 0x00000000202a0560 in ?? ()
+#36 0x00007fff0e0bd368 in ?? ()
+#37 0x000000001fbb3970 in ?? ()
+#38 0x00007f2c728eb8a0 in ?? ()
+#39 0x00007fff0e0bd3f0 in ?? ()
+#40 0x000000001fbb3970 in ?? ()
+#41 0x00007fff0e0bd380 in ?? ()
+#42 0x00007f2c728d8ebb in ?? ()
+#43 0x00007fff0e0bd380 in ?? ()
+#44 0x000000001fbb3970 in ?? ()
+#45 0x00007fff0e0bd3f0 in ?? ()
+#46 0x000000001fbb3970 in ?? ()
+#47 0x00007fff0e0bd440 in ?? ()
+#48 0x00007f2c72886bcd in ?? ()
+#49 0x00007fff0e0bd6f0 in ?? ()
+#50 0x0000000000000019 in ?? ()
+#51 0x00007fff0e0bd3e8 in ?? ()
+#52 0x0000000013224e80 in ?? ()
+#53 0x0000000013224e80 in ?? ()
+#54 0x00007fff0e0bd478 in ?? ()
+#55 0x00007f2c9cd61160 in ?? () from /cvmfs/cms.cern.ch/el8_amd64_gcc10/cms/cmssw/CMSSW_12_3_5/external/el8_amd64_gcc10/lib/libRIO.so
+#56 0x0000000000000029 in ?? ()
+#57 0x000000001fbb3a30 in ?? ()
+#58 0x000000001e8ed5b0 in ?? ()
+#59 0x000000001fbb3960 in ?? ()
+#60 0x0000000000000000 in ?? ()

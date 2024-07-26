@@ -2,6 +2,7 @@
 // leptonicCheck(), Electron_cutBasedIdNoIso_tight(), genttbarMassCalc(C), fVectorConstructor(), lvConstructor(C), DeltaR_VecAndFloat(), ptRel()
 // I put some of the methods in here becasue I didn't know where else to put them.
 
+// genttbarMassCalc(C) MOVED to generatorInfo.cc
 using namespace std;
 using namespace ROOT::VecOps;
 
