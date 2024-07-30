@@ -52,12 +52,6 @@ RVec<float> assign_leps(bool isMu, bool isEl, RVec<int> &TPassMu, RVec<int> &TPa
   RVec<float> lepVec = {lep_pt,lep_eta,lep_phi,lep_mass,lep_miniIso};
   return lepVec;
 };
-//CAMI TRYING TO RETUTN SOMETHING ELSE
-struct AfterReturn {
-  ~AfterReturn() {
-    std::cout<<"final line after  output"<<endl;
-  }
-};
 
 // ---- Clean Jets MC Function ----
 RVec<RVec<float>> cleanJetsMC (const bool &debug, const string &campaign, const string &jesvar, 
@@ -67,7 +61,7 @@ RVec<RVec<float>> cleanJetsMC (const bool &debug, const string &campaign, const 
 	const RVec<TLorentzVector> &genjt_p4, const RVec<int> &jt_genidx, const RVec<TLorentzVector> &mu_p4, const RVec<int> mu_jetid, 
 	const RVec<TLorentzVector> &el_p4, const RVec<int> &el_jetid, const float &rho, const float &met, const float &phi) 
 {
-  AfterReturn guard;
+
 //  if (met == 0 && debug) cout << "---------------------------------------------------------------\n";
   if (met > 0 && debug) cout << "---------------------------------------------------------------\n";
 
