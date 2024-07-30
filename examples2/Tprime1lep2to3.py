@@ -106,7 +106,9 @@ if isMC:
 era = str(dataera)
 
 jercrunver = procver
-if not (jercrunver == "v4"): jercrunver = "v123"
+if not isMC:
+	if not (jercrunver == "v4"): jercrunver = "v123"
+### DOUBLE CHECK WITH JULIE IF *ALL* OF THE CORRECTIONS GOT A "v1234", IF SO, I CAN TAKE THIS AWAY AND JUST MANUALLY ADD IT TO THE SECTION BELOW WHERE I DEFINE VARIBALES BASED ON CAMPAIGN #### CAMI
 
 del tokens
 
@@ -162,7 +164,8 @@ def analyze(jesvar):
 	a = analyzer(file_name) # Create analyzer instance
 
 	print('==========================INITIALIZED ANALYZER========================')
-
+	print("jesvar = ", jesvar)
+	print ("jercrunver = ",jercrunver)  #cami test
   # ------------------ Golden JSON Data ------------------
   # change the jsonfile path to somewhere they have it in TIMBER
 	jsonfile = "../TIMBER/data/LumiJSON/"
@@ -224,7 +227,7 @@ def analyze(jesvar):
 
 	print ("point f")
 
-	print ("mcname =",mcname,"\njecver =",jecver, "jetprompt =",jetprompt,"\ncorrPU_name =",corrPU_name,"\nak4pt_name (same for ak8) =",ak4pt_name,"\nak4jer_name (same for ak8) =",ak4jer_name,"\nprompt =",prompt,"\nak4pf =",ak4pf,"\nak8pf =",ak8pf,"\nveto_run =",veto_run,"\njercrun =",jercrun,"\nelectroncorrset->at(\"Electron-ID-SF\") \nmuoncorrset->at(\"NUM_MediumID_DEN_TrackerMuons\") \nmuoncorrset->at(\"NUM_Mu50_or_CascadeMu100_or_HighPtTkMu100_DEN_CutBasedIdGlobalHighPt_and_TkIsoLoose\") \njetvetocorrset->at(prompt+veto_run =",prompt+veto_run,")","\nauto ak4corrL1 = ak4corrset->at(",prompt + jercrun + jecver,"_DATA_L1FastJet",ak4pf,"\") \nauto ak4corr = ak4corrset->compound().at(",prompt + jercrun + jecver,"_DATA_L1L2L3Res",ak4pf,"\") \nak8corr = ak8corrset->compound().at(",prompt + jercrun + jecver,"_DATA_L1L2L3Res",ak8pf,")")
+	print ("mcname =",mcname,"\njecver =",jecver, "jetprompt =",jetprompt,"\ncorrPU_name =",corrPU_name,"\nak4pt_name (same for ak8) =",ak4pt_name,"\nak4jer_name (same for ak8) =",ak4jer_name,"\nprompt =",prompt,"\nak4pf =",ak4pf,"\nak8pf =",ak8pf,"\nveto_run =",veto_run,"\njercrun =",jercrun,"\nelectroncorr = electroncorrset->at(\"Electron-ID-SF\") \nmuoncorrset->at(\"NUM_MediumID_DEN_TrackerMuons\") \nmuoncorr = muoncorrset->at(\"NUM_GlobalMuons_DEN_TrackerMuonProbes\") \nmuonidcorr = muoncorrset->at(\"NUM_TightID_DEN_GlobalMuonProbes\") \njetvetocorrset->at(prompt+veto_run =",prompt+veto_run)
 
 	print("============ point f print end ===========")
 # CAMI -- in recofunc, change the muon part of the func to return value '1' instead of figuring our value from corr
@@ -271,6 +274,11 @@ def analyze(jesvar):
 			auto ak8corr = ak8corrset->compound().at(prompt + jecver + "_MC_L1L2L3Res" + ak8pf);
 	""")
 	print ("point h - if not isMC/else")
+
+	if not isMC:
+		print("ak4corrL1 = ",prompt,jercrun,jecver,"_DATA_L1FastJet",ak4pf,"\nak4corr = ",prompt,jercrun,jecver,"_DATA_L1L2L3Res",ak4pf,"\nak8corr = ",prompt,jercrun,jecver,"_DATA_L1L2L3Res",ak8pf)
+	else:
+		print ("ak4corrL1 =",prompt,jecver,"_MC_L1FastJet",ak4pf,"\nak4corrUnc = ",prompt,jecver,"_MC_Total",ak4pf,"\nak4corr = ",prompt,jecver,"_MC_L1L2L3Res",ak4pf,"\nak8corr = ",prompt,jecver,"_MC_L1L2L3Res",ak8pf,"\nak4ptres = ",ak4pt_name,"\nak4jer = ",ak4jer_name,"\nak8corrUnc = ",prompt,jecver,"_MC_Total",ak8pf)
 
 #from muonhltcorr => std::cout << "\t loaded muon trig" << std::endl; // REDO ME (Do we need to change something?)
 
@@ -376,12 +384,14 @@ def analyze(jesvar):
 		jVars.Add("cleanMets", "cleanJetsMC(debug,campaign,jesvar,ak4corr,ak4corrL1,ak4corrUnc,ak4ptres,ak4jer,ak8corr,ak8corrUnc,Jet_P4,Jet_rawFactor,Jet_muonSubtrFactor,Jet_area,Jet_EmEF,Jet_jetId,GenJet_P4,Jet_genJetIdx,SMuon_P4,SMuon_jetIdx,SElectron_P4,SElectron_jetIdx,Rho_fixedGridRhoFastjetAll,RawMET_pt,RawMET_phi)") # lepton args are unused in this call
 		jVars.Add("GenJetAK8_P4", "fVectorConstructor(GenJetAK8_pt,GenJetAK8_eta,GenJetAK8_phi,GenJetAK8_mass)")
 		jVars.Add("cleanFatJets", "cleanJetsMC(debug,campaign,jesvar,ak4corr,ak4corrL1,ak4corrUnc,ak4ptres,ak4jer,ak8corr,ak8corrUnc,FatJet_P4,FatJet_rawFactor,FatJet_rawFactor,FatJet_area,FatJet_area,FatJet_jetId,GenJetAK8_P4,FatJet_genJetAK8Idx,SMuon_P4,SMuon_jetIdx,SElectron_P4,SElectron_jetIdx,Rho_fixedGridRhoFastjetAll,DummyZero,DummyZero)") # args 12 and 14 are dummies
+		print ("point n.2 -- (MC) jVars.Add = cleanjetsMC, fVEctorConstructor")
 	else:
       # Replace all the GenJet arguments with fakes here for data. 
 		jVars.Add("cleanedJets", "cleanJetsData(debug,campaign,ak4corr,ak4corrL1,ak8corr,Jet_P4,Jet_rawFactor,Jet_muonSubtrFactor,Jet_area,Jet_EmEF,Jet_jetId,Jet_P4,Jet_jetId,SMuon_P4,SMuon_jetIdx,SElectron_P4,SElectron_jetIdx,Rho_fixedGridRhoFastjetAll,DummyZero,DummyZero)") # muon and EM factors unused in this call, args 16-17 are dummies
 		jVars.Add("cleanMets", "cleanJetsData(debug,campaign,ak4corr,ak4corrL1,ak8corr,Jet_P4,Jet_rawFactor,Jet_muonSubtrFactor,Jet_area,Jet_EmEF,Jet_jetId,Jet_P4,Jet_jetId,Muon_P4,Muon_jetIdx,SElectron_P4,SElectron_jetIdx,Rho_fixedGridRhoFastjetAll,RawMET_pt,RawMET_phi)") # lepton args unused in this call, args 16-17 are dummies
 		jVars.Add("cleanFatJets", "cleanJetsData(debug,campaign,ak4corr,ak4corrL1,ak8corr,FatJet_P4,FatJet_rawFactor,FatJet_rawFactor,FatJet_area,FatJet_area,FatJet_jetId,FatJet_P4,FatJet_jetId,SMuon_P4,SMuon_jetIdx,SElectron_P4,SElectron_jetIdx,Rho_fixedGridRhoFastjetAll,DummyZero,DummyZero)") # args 12, 14, 16, 17 are dummies 
-	print ("point o")
+
+	print ("point o - (DATA) jVars.Add = cleanjetsData")
 
 	#Jet Assign
 	jVars.Add("cleanJet_pt", "cleanedJets[0]")

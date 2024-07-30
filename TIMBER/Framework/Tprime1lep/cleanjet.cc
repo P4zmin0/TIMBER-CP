@@ -52,7 +52,12 @@ RVec<float> assign_leps(bool isMu, bool isEl, RVec<int> &TPassMu, RVec<int> &TPa
   RVec<float> lepVec = {lep_pt,lep_eta,lep_phi,lep_mass,lep_miniIso};
   return lepVec;
 };
-    
+//CAMI TRYING TO RETUTN SOMETHING ELSE
+struct AfterReturn {
+  ~AfterReturn() {
+    std::cout<<"final line after  output"<<endl;
+  }
+};
 
 // ---- Clean Jets MC Function ----
 RVec<RVec<float>> cleanJetsMC (const bool &debug, const string &campaign, const string &jesvar, 
@@ -62,7 +67,9 @@ RVec<RVec<float>> cleanJetsMC (const bool &debug, const string &campaign, const 
 	const RVec<TLorentzVector> &genjt_p4, const RVec<int> &jt_genidx, const RVec<TLorentzVector> &mu_p4, const RVec<int> mu_jetid, 
 	const RVec<TLorentzVector> &el_p4, const RVec<int> &el_jetid, const float &rho, const float &met, const float &phi) 
 {
-  if (met == 0 && debug) cout << "---------------------------------------------------------------\n";
+  AfterReturn guard;
+//  if (met == 0 && debug) cout << "---------------------------------------------------------------\n";
+  if (met > 0 && debug) cout << "---------------------------------------------------------------\n";
 
   RVec<float> cleanJetPt(jt_p4.size()), cleanJetEta(jt_p4.size()), cleanJetPhi(jt_p4.size()), cleanJetMass(jt_p4.size());//, rawfact(jt_p4.size());
 
@@ -81,10 +88,10 @@ RVec<RVec<float>> cleanJetsMC (const bool &debug, const string &campaign, const 
   
   float metx = met*cos(phi);
   float mety = met*sin(phi);
-  //if (met > 0 && debug) std::cout<< "Incoming met = " << met << ", phi = " << phi << std::endl;
+  if (met > 0 && debug) std::cout<< "Incoming met = " << met << ", phi = " << phi << std::endl;
 
   for (unsigned int ijet = 0; ijet < jt_p4.size(); ijet++) {
-    if (met == 0 && debug) std::cout<< "Incoming jet, pt = " << jt_p4[ijet].Pt() << ", phi = " << jt_p4[ijet].Phi() << std::endl;
+//    if (met == 0 && debug) std::cout<< "Incoming jet, pt = " << jt_p4[ijet].Pt() << ", phi = " << jt_p4[ijet].Phi() << std::endl;
     TLorentzVector jet = jt_p4[ijet];
     int jetid = jt_id[ijet];   
     float rf = jt_rf[ijet];
@@ -105,43 +112,44 @@ RVec<RVec<float>> cleanJetsMC (const bool &debug, const string &campaign, const 
 	  rf = 0; 
 	}
     }
-    if (met == 0 && debug) std::cout<< "Post Lepton jet, pt = " << jet.Pt() << ", phi = " << jet.Phi() << std::endl;
-    
+//    if (met == 0 && debug) std::cout<< "Post Lepton jet, pt = " << jet.Pt() << ", phi = " << jet.Phi() << std::endl;
+    if (met > 0 && debug) std::cout<< "Post Lepton jet, pt = " << jet.Pt() << ", phi = " << jet.Phi() << std::endl;
+
     float jes = 1.0; float jesL1 = 1.0; float jer = 1.0; float unc = 1.0;
     jet = jet * (1 - rf);                                                         // rf = 0 if JEC undone above
-    
-    if (met == 0 && debug) std::cout<< "Print 3 jet, pt = " << jet.Pt() << ", phi = " << jet.Phi() << std::endl;
-    
-    if (met > 0 && jt_em[ijet] > 0.9) continue;                                    // not these jets for MET	
+
+//    if (met == 0 && debug) std::cout<< "Print 3 jet, pt = " << jet.Pt() << ", phi = " << jet.Phi() << std::endl;
+    if (met > 0 && debug) std::cout<< "Print 3 jet, pt = " << jet.Pt() << ", phi = " << jet.Phi() << std::endl;
+
+    if (met > 0 && jt_em[ijet] > 0.9) continue;                                    // not these jets for MET
     if (met > 0) jet *= (1 - jt_murf[ijet]);                                       // further correct raw to muon-substracted raw for T1.
     float rawpt = jet.Pt();
     //cout << "print 3b jet: rho = " << rho << ", rawpt = " << rawpt << ", jet.Eta = " << jet.Eta() << endl;
-    //cout << "print 3c jet: jt_area[ijet] = " << jt_area[ijet] << endl;
-    cout << "Calling evaluate on the jescorr" << endl;
+//    cout << "print 3c jet: jt_area[ijet] = " << jt_area[ijet] << endl;
+    if (met > 0)cout << "Calling evaluate on the jescorr" << endl;
 
-    if (campaign == "Summer23BPix")jes = jescorr->evaluate({jt_area[ijet],jet.Eta(),jet.Phi(),rawpt,rho}); // Data & MC get jes for 2023BPix
-    else jes = jescorr->evaluate({jt_area[ijet],jet.Eta(),jet.Phi(),rawpt,rho});                 // Data & MC get jes
+    if (campaign == "Summer23BPix") jes = jescorr->evaluate({jt_area[ijet],jet.Eta(),jet.Phi(),rawpt,rho}); // Data & MC get jes for 2023BPix
+    else jes = jescorr->evaluate({jt_area[ijet],jet.Eta(),rawpt,rho});                 // Data & MC get jes
 
     //cout << "1st print after defining jes either for 23BPix or other campaigns" << endl;
     //if (met == 0 && debug) std::cout<< "Print 4 jet, pt = " << jet.Pt() << ", phi = " << jet.Phi()<<"jes = "<<jes << std::endl;
 
-    cout << "Calling evaluate on the ak4corrL1" << endl;
-
-    //if (met > 0) {
-    //if (campaign == "Summer23BPix")jesL1 = ak4corrL1->evaluate({jt_area[ijet],jet.Eta(),jet.Phi(),rawpt,rho}); // L1-only jes for MET T1 2023BPix
-    //else jesL1 = ak4corrL1->evaluate({jt_area[ijet],jet.Eta(),rawpt,rho}); // L1-only jes for MET T1
-    //}
+    if (met > 0)cout << "Calling evaluate on the ak4corrL1" << endl;
 
     if (met > 0) jesL1 = ak4corrL1->evaluate({jt_area[ijet],jet.Eta(),rawpt,rho});
 
-    cout << "print after defining jesL1 eithe for 23BPix or other campaigns" << endl;
+    if (met > 0)cout << "print after defining jesL1 eithe for 23BPix or other campaigns, jesL1= "<<jesL1<< endl;
 
     // ----- MC specific: ----- 
     float res = ak4ptres->evaluate({jet.Eta(),rawpt*jes,rho}); //argument "jes" has already been filtered by campaign -- includes phi if it's 23BPix?
 
-    if (met == 0 && debug) std::cout<< "Print 5 jet, pt = " << jet.Pt() << ", phi = " << jet.Phi() << std::endl;
-    float sf = ak4jer->evaluate({jet.Eta(),jervar});
-    if (met == 0 && debug) std::cout<< "Print 6 jet, pt = " << jet.Pt() << ", phi = " << jet.Phi() << std::endl;
+//    if (met == 0 && debug) std::cout<< "Print 5 jet, pt = " << jet.Pt() << ", phi = " << jet.Phi() << std::endl;
+    if (met > 0 && debug) std::cout<< "Print 5 jet, pt = " << jet.Pt() << ", phi = " << jet.Phi() << std::endl;
+
+    float sf = ak4jer->evaluate({jet.Eta(),rawpt*jes,jervar});
+//    if (met == 0 && debug) std::cout<< "Print 6 jet, pt = " << jet.Pt() << ", phi = " << jet.Phi() << std::endl;
+    if (met > 0 && debug) std::cout<< "Print 6 jet, pt = " << jet.Pt() << ", phi = " << jet.Phi() << std::endl;
+
     bool smeared = false;                                                       // MC only gets a JER smear, one of 2 methods below:
     if(jt_genidx[ijet] > -1 && genjt_p4[jt_genidx[ijet]].Pt() > 0){	  
       double dPt = fabs(genjt_p4[jt_genidx[ijet]].Pt() - rawpt*jes);
@@ -160,9 +168,10 @@ RVec<RVec<float>> cleanJetsMC (const bool &debug, const string &campaign, const 
 
     TLorentzVector jetL1 = jet*jesL1*jer*unc;
     jet = jet*jes*jer*unc;                                                        // evals to jes*1 for data.
-    
-    if (met == 0 && debug) std::cout<< "Print last jet, pt = " << jet.Pt() << ", phi = " << jet.Phi() << std::endl;
-    
+
+//    if (met == 0 && debug) std::cout<< "Print last jet, pt = " << jet.Pt() << ", phi = " << jet.Phi() << std::endl;
+    if (met > 0 && debug) std::cout<< "Print last jet, pt = " << jet.Pt() << ", phi = " << jet.Phi() << std::endl;
+
     rf = 1.0 - 1.0/(jes*jer*unc);	
     if (jet.Pt() > 15) {
 	metx += (jetL1 - jet).Px();
@@ -177,9 +186,13 @@ RVec<RVec<float>> cleanJetsMC (const bool &debug, const string &campaign, const 
   
   TVector2 corrmet(metx,mety);
   RVec<float> corrmets = {float(corrmet.Mod()),float(TVector2::Phi_mpi_pi(corrmet.Phi()))};
-  std::cout<<"corrmets size = "<<corrmets.size()<<", corrmets[0] = "<<corrmets[0]<<", corrmets[1] = "<<corrmets[1]<<endl;
+  if (met > 0)std::cout<<"corrmets size = "<<corrmets.size()<<", corrmets[0] = "<<corrmets[0]<<", corrmets[1] = "<<corrmets[1]<<endl;
+
   RVec<RVec<float>> output = {cleanJetPt, cleanJetEta, cleanJetPhi, cleanJetMass, corrmets};
-  
+
+  //if (met > 0)std::cout<<"final line before output"<<endl;
+  std::cout<<"output size = "<<output.size()<<", output[0][0] = "<<output[0][0]<<", output[1][0] = "<<output[1][0]<<endl;
+
   return output;
 };
 

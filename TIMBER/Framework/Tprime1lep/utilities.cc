@@ -118,7 +118,10 @@ ROOT::VecOps::RVec<float> DeltaR_VecAndFloat(ROOT::VecOps::RVec<float>& jet_eta,
   return DR;
 };
 
-//cami
+
+// --------------------------------------------
+//           PICK ISOLATED AK4 JETS
+// --------------------------------------------
 ROOT::VecOps::RVec<float> standalone_Jet(ROOT::VecOps::RVec<float>& gcJet_eta, ROOT::VecOps::RVec<float>& gcJet_phi, ROOT::VecOps::RVec<float>& gcFatJet_eta, ROOT::VecOps::RVec<float>& gcFatJet_phi)
 {
   ROOT::VecOps::RVec<float> lone_Jet (gcJet_eta.size());
